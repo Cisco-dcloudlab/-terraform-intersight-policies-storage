@@ -36,5 +36,5 @@ module "main" {
 }
 
 output "drive_group" {
-  value = module.main.drive_groups["dg0"].moid
+  value = module.main.drive_groups["dg0"]
 }
