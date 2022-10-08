@@ -10,15 +10,15 @@ module "main" {
               slots = "1,2"
             }
           ]
-          name = var.name
+          name = "dg0"
         }
       ]
-      name       = var.name
+      name       = "dg0"
       raid_level = "Raid1"
       virtual_drives = [
         {
           boot_drive = true
-          name       = var.name
+          name       = "vd0"
         }
       ]
     },
@@ -36,5 +36,5 @@ module "main" {
 }
 
 output "drive_group" {
-  value = module.main.drive_groups[var.name].moid
+  value = module.main.drive_groups["dg0"].moid
 }

@@ -140,7 +140,7 @@ func TestFull(t *testing.T) {
           "BootDrive": true,
           "ClassId": "storage.VirtualDriveConfiguration",
           "ExpandToAvailable": true,
-          "Name": "{{ .name }}",
+          "Name": "vd0",
           "ObjectType": "storage.VirtualDriveConfiguration",
           "Size": 50,
           "VirtualDrivePolicy": {
