@@ -59,7 +59,7 @@ func TestFull(t *testing.T) {
 	expectedJSONTemplate := `
 {
 	"Name":        "{{ .name }}",
-	"Description": "{{ .name }} Storage Policy.",
+	"Description": "{{ .name }} Storage Policy."
 
 	"DriveGroup": [
         {
