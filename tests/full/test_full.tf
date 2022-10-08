@@ -1,51 +1,40 @@
-terraform {
-  required_providers {
-    test = {
-      source = "terraform.io/builtin/test"
-    }
-
-    intersight = {
-      source  = "CiscoDevNet/intersight"
-      version = ">=1.0.32"
-    }
-  }
-}
-
 module "main" {
-  source           = "../.."
-  assignment_order = "sequential"
-  description      = "Demo WWPN Pool"
-  id_blocks = [
+  source      = "../.."
+  description = "${var.name} Storage Policy."
+  drive_groups = [
     {
-      from = "0:00:00:25:B5:00:00:00"
-      size = 1000
+      manual_drive_group = [
+        {
+          drive_array_spans = [
+            {
+              slots = "1,2"
+            }
+          ]
+          name = var.name
+        }
+      ]
+      name       = var.name
+      raid_level = "Raid1"
+      virtual_drives = [
+        {
+          boot_drive = true
+          name       = var.name
+        }
+      ]
+    },
+  ]
+  m2_configuration = [
+    {
+      controller_slot = "MSTOR-RAID-1"
+      enable          = true
     }
   ]
-  name         = "default"
-  organization = "default"
-  pool_purpose = "WWPN"
+  name                     = var.name
+  organization             = "terratest"
+  unused_disks_state       = "NoChange"
+  use_jbod_for_vd_creation = true
 }
 
-data "intersight_fcpool_pool" "wwpn_pool" {
-  depends_on = [
-    module.main
-  ]
-  name = "default"
-}
-
-resource "test_assertions" "wwpn_pool" {
-  component = "wwpn_pool"
-
-  # equal "description" {
-  #   description = "description"
-  #   got         = data.intersight_fcpool_pool.wwpn_pool.description
-  #   want        = "Demo WWPN Pool"
-  # }
-  # 
-  # equal "name" {
-  #   description = "name"
-  #   got         = data.intersight_fcpool_pool.wwpn_pool.name
-  #   want        = "default"
-  # }
-
+output "drive_group" {
+  value = module.main.drive_groups[var.name].moid
 }

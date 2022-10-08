@@ -13,7 +13,7 @@ output "moid" {
 # Collect the moid of the Storage Policy - Drive Group as an Output
 #___________________________________________________________________
 
-output "drive_group_moids" {
+output "drive_groups" {
   description = "Storage Policy - Drive Group(s) Managed Object ID(s) (moids)."
   value = { for v in sort(
     keys(intersight_storage_drive_group.drive_groups)
