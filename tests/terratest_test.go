@@ -111,14 +111,12 @@ func TestFull(t *testing.T) {
     "DriveType": "Any",
     "DrivesPerSpan": 0,
     "MinimumDriveSize": 0,
-    "NumDedicatedHotSpares": "",
     "NumberOfSpans": 0,
     "ObjectType": "storage.AutomaticDriveGroup",
     "UseRemainingDrives": false
   },
   "ManualDriveGroup": {
     "ClassId": "storage.ManualDriveGroup",
-    "DedicatedHotSpares": "",
     "ObjectType": "storage.ManualDriveGroup",
     "SpanGroups": [
       {
