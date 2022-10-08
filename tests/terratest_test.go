@@ -73,7 +73,7 @@ func TestFull(t *testing.T) {
 	"M2VirtualDrive": {
         "ClassId": "storage.M2VirtualDriveConfig",
         "ControllerSlot": "MSTOR-RAID-1",
-        "Enable": false,
+        "Enable": true,
         "ObjectType": "storage.M2VirtualDriveConfig"
 	},
 	"Raid0Drive": {
