@@ -106,56 +106,55 @@ func TestFull(t *testing.T) {
 	// This is a Go template for the JSON object, so template variables can be used
 	expectedDGTemplate := `
 {
-	"AutomaticDriveGroup": {
-        "ClassId": "storage.AutomaticDriveGroup",
-        "DriveType": "Any",
-        "DrivesPerSpan": 0,
-        "MinimumDriveSize": 0,
-        "NumDedicatedHotSpares": "",
-        "NumberOfSpans": 0,
-        "ObjectType": "storage.AutomaticDriveGroup",
-        "UseRemainingDrives": false
-      },
-      "ManualDriveGroup": {
-        "ClassId": "storage.ManualDriveGroup",
-        "DedicatedHotSpares": "",
-        "ObjectType": "storage.ManualDriveGroup",
-        "SpanGroups": [
-          {
-            "ClassId": "storage.SpanDrives",
-            "ObjectType": "storage.SpanDrives",
-            "Slots": "1,2"
-          }
-        ]
-      },
-      "RaidLevel": "Raid1",
-      "StoragePolicy": {
-        "ClassId": "mo.MoRef",
-        "Moid": "{{ .storage_policy }}",
-        "ObjectType": "storage.StoragePolicy",
-        "link": "https://www.intersight.com/api/v1/storage/StoragePolicies/{{ .storage_policy }}"
-      },
-      "VirtualDrives": [
-        {
-          "BootDrive": true,
-          "ClassId": "storage.VirtualDriveConfiguration",
-          "ExpandToAvailable": true,
-          "Name": "vd0",
-          "ObjectType": "storage.VirtualDriveConfiguration",
-          "Size": 50,
-          "VirtualDrivePolicy": {
-            "AccessPolicy": "Default",
-            "ClassId": "storage.VirtualDrivePolicy",
-            "DriveCache": "Default",
-            "ObjectType": "storage.VirtualDrivePolicy",
-            "ReadPolicy": "Default",
-            "StripSize": 64,
-            "WritePolicy": "Default"
-          }
-        }
-      ]
+  "AutomaticDriveGroup": {
+    "ClassId": "storage.AutomaticDriveGroup",
+    "DriveType": "Any",
+    "DrivesPerSpan": 0,
+    "MinimumDriveSize": 0,
+    "NumDedicatedHotSpares": "",
+    "NumberOfSpans": 0,
+    "ObjectType": "storage.AutomaticDriveGroup",
+    "UseRemainingDrives": false
+  },
+  "ManualDriveGroup": {
+    "ClassId": "storage.ManualDriveGroup",
+    "DedicatedHotSpares": "",
+    "ObjectType": "storage.ManualDriveGroup",
+    "SpanGroups": [
+      {
+        "ClassId": "storage.SpanDrives",
+        "ObjectType": "storage.SpanDrives",
+        "Slots": "1,2"
+      }
+    ]
+  },
+  "RaidLevel": "Raid1",
+  "StoragePolicy": {
+    "ClassId": "mo.MoRef",
+    "Moid": "{{ .storage_policy }}",
+    "ObjectType": "storage.StoragePolicy",
+    "link": "https://www.intersight.com/api/v1/storage/StoragePolicies/{{ .storage_policy }}"
+  },
+  "VirtualDrives": [
+    {
+      "BootDrive": true,
+      "ClassId": "storage.VirtualDriveConfiguration",
+      "ExpandToAvailable": true,
+      "Name": "vd0",
+      "ObjectType": "storage.VirtualDriveConfiguration",
+      "Size": 50,
+      "VirtualDrivePolicy": {
+        "AccessPolicy": "Default",
+        "ClassId": "storage.VirtualDrivePolicy",
+        "DriveCache": "Default",
+        "ObjectType": "storage.VirtualDrivePolicy",
+        "ReadPolicy": "Default",
+        "StripSize": 64,
+        "WritePolicy": "Default"
+      }
     }
-  ]}
+  ]
+}
 `
 	// Validate that what is in the Intersight API matches the expected
 	// The AssertMOComply function only checks that what is expected is in the result. Extra fields in the
